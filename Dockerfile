@@ -7,9 +7,9 @@ FROM alpine:3.8
 ENV JAVA_VERSION_MAJOR=8 \
     JAVA_VERSION_MINOR=201 \
     JAVA_VERSION_BUILD=09 \
-    JAVA_PACKAGE=server-jre \
+    JAVA_PACKAGE=jdk \
     JAVA_PACKAGE_VARIANT=nashorn \
-    JAVA_JCE=standard \
+    JAVA_JCE=unlimited \
     JAVA_HOME=/opt/jdk \
     PATH=${PATH}:/opt/jdk/bin \
     GLIBC_REPO=https://github.com/sgerrand/alpine-pkg-glibc \
