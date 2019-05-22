@@ -83,3 +83,5 @@ ENV LC_NUMERIC="zh_TW.UTF-8"
 ENV LC_TIME="zh_TW.UTF-8"
 ENV NLS_LANG=.AL32UTF8
 
+RUN apk add tzdata
+RUN ln -fs /usr/share/zoneinfo/Asia/Taipei /etc/localtime
