@@ -29,7 +29,6 @@ RUN set -ex && \
     mkdir /opt && \
     curl -jksSLH "Cookie: oraclelicense=accept-securebackup-cookie" -o /tmp/java.tar.gz \
 	  https://github.com/ojdkbuild/contrib_jdk8u-ci/releases/download/${JAVA_PACKAGE}${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}-ojdkbuild-linux-x64.zip
-    echo "${JAVA_PACKAGE_SHA256}  /tmp/java.tar.gz" > /tmp/java.tar.gz.sha256 && \
     gunzip /tmp/java.tar.gz && \
     tar -C /opt -xf /tmp/java.tar && \
     ln -s /opt/jdk1.${JAVA_VERSION_MAJOR}.0_${JAVA_VERSION_MINOR} /opt/jdk && \
