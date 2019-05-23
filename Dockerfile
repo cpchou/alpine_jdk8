@@ -1,6 +1,3 @@
-https://github.com/ojdkbuild/contrib_jdk8u-ci/releases/download/jdk8u212-b04/jdk-8u212-ojdkbuild-linux-x64.zip
-
-    
 # AlpineLinux with a glibc-2.29-r0 and Open JDK 8
 FROM alpine:3.8
 
