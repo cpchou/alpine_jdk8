@@ -1,5 +1,6 @@
 # AlpineLinux with a glibc-2.29-r0 and Open Java 8
-FROM alpine:3.8
+#FROM alpine:3.8
+FROM cpchou/alpine_ssh
 
 # Java Version and other ENV
 ENV JAVA_VERSION_MAJOR=8 \
