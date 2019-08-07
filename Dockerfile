@@ -75,8 +75,8 @@ RUN ln -fs /usr/share/zoneinfo/Asia/Taipei /etc/localtime
 #安裝字型
 RUN apk --no-cache add msttcorefonts-installer fontconfig && update-ms-fonts && fc-cache -f
 #全字庫正楷體
-RUN wget https://cpchou0701.diskstation.me/fonts/TW-Kai-98_1.ttf
+#RUN wget https://cpchou0701.diskstation.me/fonts/TW-Kai-98_1.ttf
 #全字庫宋體
-RUN wget https://cpchou0701.diskstation.me/fonts/TW-Sung-98_1.ttf
-RUN mv *.ttf /usr/share/fonts/truetype
+#RUN wget https://cpchou0701.diskstation.me/fonts/TW-Sung-98_1.ttf
+#RUN mv *.ttf /usr/share/fonts/truetype
 RUN fc-cache -f -v
