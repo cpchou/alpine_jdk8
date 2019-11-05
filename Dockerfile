@@ -81,7 +81,4 @@ RUN apk --no-cache add msttcorefonts-installer fontconfig && update-ms-fonts && 
 #RUN mv *.ttf /usr/share/fonts/truetype
 RUN fc-cache -f -v
 
-RUN apk add telnet
-RUN apk add iputils-ping
-RUN apk add net-tools
-RUN apk add curl
+RUN apk add busybox-extras
