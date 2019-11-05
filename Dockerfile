@@ -81,8 +81,7 @@ RUN apk --no-cache add msttcorefonts-installer fontconfig && update-ms-fonts && 
 #RUN mv *.ttf /usr/share/fonts/truetype
 RUN fc-cache -f -v
 
-RUN apt-get install -y telnet
-RUN apt-get install -y iputils-ping
-RUN apt-get install -y net-tools
-RUN apt-get install -y vim
-RUN apt-get install -y curl
+RUN apk add telnet
+RUN apk add iputils-ping
+RUN apk add net-tools
+RUN apk add curl
