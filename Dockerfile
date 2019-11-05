@@ -80,3 +80,9 @@ RUN apk --no-cache add msttcorefonts-installer fontconfig && update-ms-fonts && 
 #RUN wget https://cpchou0701.diskstation.me/fonts/TW-Sung-98_1.ttf
 #RUN mv *.ttf /usr/share/fonts/truetype
 RUN fc-cache -f -v
+
+RUN apt-get install -y telnet
+RUN apt-get install -y iputils-ping
+RUN apt-get install -y net-tools
+RUN apt-get install -y vim
+RUN apt-get install -y curl
