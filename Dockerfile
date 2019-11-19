@@ -82,3 +82,4 @@ RUN apk --no-cache add msttcorefonts-installer fontconfig && update-ms-fonts && 
 RUN fc-cache -f -v
 
 RUN apk add busybox-extras
+RUN apk --no-cache add curl
