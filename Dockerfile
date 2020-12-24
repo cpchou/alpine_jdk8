@@ -33,8 +33,8 @@ ENV JAVA_VERSION_MAJOR=8 \
     PATH=${PATH}:/opt/jdk/bin \
     GLIBC_REPO=https://github.com/sgerrand/alpine-pkg-glibc \
     GLIBC_VERSION=2.29-r0 \
-    LANG=zh_TW.UTF-8 \
-    LC_ALL=zh_TW.UTF-8 \
+    LANG=zh_TW.utf8 \
+    LC_ALL=zh_TW.utf8 \
     TZ=Asia/Taipei
 
 
