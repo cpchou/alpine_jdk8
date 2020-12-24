@@ -1,5 +1,8 @@
 # AlpineLinux with a glibc-2.29-r0 and Open Java 8
 FROM alpine:3.8
+RUN set -ex && \
+    apk update && \
+    apk -U upgrade
 
 RUN echo "-----BEGIN PUBLIC KEY-----" > /etc/apk/keys/sgerrand.rsa.pub
 RUN echo "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApZ2u1KJKUu/fW4A25y9m" >> /etc/apk/keys/sgerrand.rsa.pub
@@ -11,14 +14,16 @@ RUN echo "Zvo9GI2e2MaZyo9/lvb+LbLEJZKEQckqRj4P26gmASrZEPStwc+yqy1ShHLA0j6m" >> /
 RUN echo "1QIDAQAB" >> /etc/apk/keys/sgerrand.rsa.pub
 RUN echo "-----END PUBLIC KEY-----" >> /etc/apk/keys/sgerrand.rsa.pub
 
+RUN pwd
 RUN echo "zh_TW" > /locale.md
 RUN echo "en_US" >> /locale.md
 
 RUN apk --no-cache add ca-certificates wget && \
     wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/glibc-2.25-r0.apk && \
     wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/glibc-bin-2.25-r0.apk && \
-    wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/glibc-i18n-2.25-r0.apk && \
-    apk add glibc-bin-2.25-r0.apk glibc-i18n-2.25-r0.apk glibc-2.25-r0.apk
+    wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/glibc-i18n-2.25-r0.apk
+    
+RUN apk add glibc-bin-2.25-r0.apk glibc-i18n-2.25-r0.apk glibc-2.25-r0.apk
 	
 RUN cat locale.md | xargs -i /usr/glibc-compat/bin/localedef -i {} -f UTF-8 {}.UTF-8
 
@@ -38,10 +43,8 @@ ENV JAVA_VERSION_MAJOR=8 \
     TZ=Asia/Taipei
 
 
-RUN set -ex && \
-    apk update && \
-    apk -U upgrade && \
-    apk add libstdc++ curl ca-certificates bash java-cacerts 
+
+RUN apk add libstdc++ curl ca-certificates bash java-cacerts 
 RUN for pkg in glibc-${GLIBC_VERSION} glibc-bin-${GLIBC_VERSION} glibc-i18n-${GLIBC_VERSION}; do curl -sSL ${GLIBC_REPO}/releases/download/${GLIBC_VERSION}/${pkg}.apk -o /tmp/${pkg}.apk; done 
 RUN apk add --allow-untrusted /tmp/*.apk 
 RUN /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib
