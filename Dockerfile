@@ -13,7 +13,7 @@ ENV JAVA_VERSION_MAJOR=8 \
     GLIBC_REPO=https://github.com/sgerrand/alpine-pkg-glibc \
     GLIBC_VERSION=2.29-r0 \
     LANG=zh_TW.UTF-8 \
-    LC_ALL zh_TW.UTF-8 \
+    LC_ALL=zh_TW.UTF-8 \
     TZ=Asia/Taipei
 
 
