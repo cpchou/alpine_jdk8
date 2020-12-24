@@ -23,8 +23,8 @@ RUN apk --no-cache add ca-certificates wget && \
     wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/glibc-bin-2.25-r0.apk && \
     wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/glibc-i18n-2.25-r0.apk
     
-RUN apk --no-cache add glibc-bin-2.25-r0.apk glibc-i18n-2.25-r0.apk glibc-2.25-r0.apk
-	
+RUN apk --allow-untrusted add glibc-bin-2.25-r0.apk glibc-i18n-2.25-r0.apk glibc-2.25-r0.apk
+RUN cat /locale.md | xargs -i /usr/glibc-compat/bin/localedef -i {} -f UTF-8 {}.UTF-8	
 
 
 # Java Version and other ENV
@@ -109,4 +109,4 @@ RUN fc-cache -f -v
 RUN apk --no-cache  add busybox-extras
 RUN apk --no-cache add curl
 RUN pwd
-RUN cat /locale.md | xargs -i /usr/glibc-compat/bin/localedef -i {} -f UTF-8 {}.UTF-8
+
