@@ -23,9 +23,9 @@ RUN apk --no-cache add ca-certificates wget && \
     wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/glibc-bin-2.25-r0.apk && \
     wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/glibc-i18n-2.25-r0.apk
     
-RUN apk add glibc-bin-2.25-r0.apk glibc-i18n-2.25-r0.apk glibc-2.25-r0.apk
+RUN apk --no-cache add glibc-bin-2.25-r0.apk glibc-i18n-2.25-r0.apk glibc-2.25-r0.apk
 	
-RUN cat locale.md | xargs -i /usr/glibc-compat/bin/localedef -i {} -f UTF-8 {}.UTF-8
+
 
 # Java Version and other ENV
 ENV JAVA_VERSION_MAJOR=8 \
@@ -94,7 +94,7 @@ RUN rm -rf /opt/jdk/jre/plugin \
 RUN ln -sf /etc/ssl/certs/java/cacerts $JAVA_HOME/jre/lib/security/cacerts
 RUN echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf
 	
-RUN apk add tzdata
+RUN apk --no-cache add tzdata
 RUN ln -fs /usr/share/zoneinfo/Asia/Taipei /etc/localtime
 
 #安裝字型
@@ -106,5 +106,7 @@ RUN apk --no-cache add msttcorefonts-installer fontconfig && update-ms-fonts && 
 #RUN mv *.ttf /usr/share/fonts/truetype
 RUN fc-cache -f -v
 
-RUN apk add busybox-extras
+RUN apk --no-cache  add busybox-extras
 RUN apk --no-cache add curl
+RUN pwd
+RUN cat /locale.md | xargs -i /usr/glibc-compat/bin/localedef -i {} -f UTF-8 {}.UTF-8
